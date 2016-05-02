@@ -4,10 +4,13 @@
   "description": "Raw web application stub",
   "main": "index.js",
   "scripts": {
+    "watch": "npm run watch:client & npm run watch:server",
+    "watch:client": "node_modules/.bin/webpack --watch src/client/main.js build/static/bundle.js",
+    "watch:server": "node_modules/.bin/babel --watch --no-babelrc --presets es2015 --plugins transform-async-to-generator -d build/ src/server/",
     "build": "npm run build:copy-files && npm run build:client && npm run build:server",
     "build:copy-files": "(test -d build/ || mkdir build/) && cp --recursive src/server/static/ build/",
     "build:client": "node_modules/.bin/webpack src/client/main.js build/static/bundle.js",
-    "build:server": "node_modules/.bin/babel --no-babelrc --plugins transform-async-to-generator -d build/ src/server/",
+    "build:server": "node_modules/.bin/babel --no-babelrc --presets es2015 --plugins transform-async-to-generator -d build/ src/server/",
     "start": "node build/main.js"
   },
   "keywords": [
@@ -21,6 +24,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-polyfill": "^6.7.4",
+    "debug": "^2.2.0",
     "koa": "^2.0.0",
     "koa-router": "^7.0.1",
     "koa-send": "^3.2.0",
