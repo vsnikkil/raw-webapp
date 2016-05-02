@@ -1,6 +1,6 @@
 {
   "name": "raw-webapp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Raw web application stub",
   "main": "index.js",
   "scripts": {
