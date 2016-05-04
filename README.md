@@ -16,15 +16,13 @@ Client side code is placed into <code>src/client/</code> and http server code in
 ### Building
 To build the project, run <code>npm run build</code>. To only build client or server code: <code>npm run build:[client|server]</code>
 
-### Watch for changes
-It is possible to automatically rebuild the project on file updates with following commands:
-<table>
-<tr>
-<th>Description</th>
-<th>Command</th>
-</tr>
-<tr><td>Watch server</td><td>npm run watch:server</td></tr>
-<tr><td>Watch client</td><td>npm run watch:client</td></tr>
-<tr><td>Watch both</td><td>npm run watch</td></tr>
-</table>
+## Watch for changes
+It is possible to automatically rebuild the project on file updates.
 
+### Watch server file changes
+* `npm run watch:server`
+
+### Watch client file changes
+* `npm run watch:client` to watch client side changes (script & style)
+  * `npm run watch:client:script` to watch only script changes on client side
+  * `npm run watch:client:style` to only watch style changes
