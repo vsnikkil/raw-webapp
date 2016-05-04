@@ -29,7 +29,7 @@
     "webpack"
   ],
   "author": "Vesa Nikkilä",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.7.4",
     "debug": "^2.2.0",
