@@ -2,14 +2,22 @@
   "name": "raw-webapp",
   "version": "1.1.0",
   "description": "Raw web application stub",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vsnikkil/raw-webapp"
+  },
   "main": "index.js",
   "scripts": {
     "watch": "npm run watch:client & npm run watch:server",
-    "watch:client": "node_modules/.bin/webpack --watch src/client/main.js build/static/bundle.js",
+    "watch:client": "npm run watch:client:style && npm run watch:client:script",
+    "watch:client:style": "node_modules/.bin/node-sass --watch --recursive src/client/style/main.scss > build/static/style.css",
+    "watch:client:script": "node_modules/.bin/webpack --watch src/client/main.js build/static/bundle.js",
     "watch:server": "node_modules/.bin/babel --watch --no-babelrc --presets es2015 --plugins transform-async-to-generator -d build/ src/server/",
     "build": "npm run build:copy-files && npm run build:client && npm run build:server",
     "build:copy-files": "(test -d build/ || mkdir build/) && cp --recursive src/server/static/ build/",
-    "build:client": "node_modules/.bin/webpack src/client/main.js build/static/bundle.js",
+    "build:client": "npm run build:client:script && npm run build:client:style",
+    "build:client:script": "node_modules/.bin/webpack src/client/main.js build/static/bundle.js",
+    "build:client:style": "(test -d build/static/ || mkdir -p build/static/) && node_modules/.bin/node-sass src/client/style/main.scss > build/static/style.css",
     "build:server": "node_modules/.bin/babel --no-babelrc --presets es2015 --plugins transform-async-to-generator -d build/ src/server/",
     "start": "node build/main.js"
   },
@@ -38,6 +46,7 @@
     "babel-plugin-transform-async-to-generator": "^6.7.4",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
+    "node-sass": "^3.7.0",
     "webpack": "^2.1.0-beta.6"
   }
 }
