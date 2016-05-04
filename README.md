@@ -1,3 +1,6 @@
+[![Dependency Status]](https://david-dm.org/vsnikkil/raw-webapp)
+[![devDependency Status]](https://david-dm.org/vsnikkil/raw-webapp#info=devDependencies)
+
 # Raw web application stub
 A simple web application stub to get things started fast. This stub includes sample http server ([Koa](https://github.com/koajs/koa)) and [React](https://github.com/facebook/react)-ready frontend. Frontend is bundled with [webpack](https://github.com/webpack/webpack). Both the client bundle and the server side code are transpiled with babel and es2015 preset. Client also includes react preset.
 
