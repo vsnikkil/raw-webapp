@@ -28,7 +28,7 @@ It is possible to automatically rebuild the project on file updates.
 ### Watch client file changes
 * `npm run watch:client` to watch client side changes (script & style)
   * `npm run watch:client:script` to watch only script changes on client side
-  * `npm run watch:client:style` to only watch style changes
+  * `npm run watch:client:style` to only watch style changes (not working currently)
 
 ## License
 MIT
