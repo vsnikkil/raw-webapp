@@ -10,12 +10,12 @@
   "scripts": {
     "watch": "npm run watch:client & npm run watch:server",
     "watch:client": "npm run watch:client:style && npm run watch:client:script",
-    "watch:client:script": "node_modules/.bin/webpack --watch src/client/main.js build/static/bundle.js",
+    "watch:client:script": "node_modules/.bin/webpack --watch src/client/script/main.js build/static/bundle.js",
     "watch:server": "node_modules/.bin/babel --watch --no-babelrc --presets es2015,stage-0 -d build/ src/server/",
     "build": "npm run build:copy-files && npm run build:client && npm run build:server",
     "build:copy-files": "(test -d build/ || mkdir build/) && cp --recursive src/server/static/ build/",
     "build:client": "npm run build:client:script && npm run build:client:style",
-    "build:client:script": "node_modules/.bin/webpack src/client/main.js build/static/bundle.js",
+    "build:client:script": "node_modules/.bin/webpack src/client/script/main.js build/static/bundle.js",
     "build:client:style": "(test -d build/static/ || mkdir -p build/static/) && node_modules/.bin/node-sass src/client/style/main.scss > build/static/style.css",
     "build:server": "node_modules/.bin/babel --no-babelrc --presets es2015,stage-0 -d build/ src/server/",
     "start": "node build/main.js"
