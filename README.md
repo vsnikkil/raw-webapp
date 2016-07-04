@@ -31,4 +31,4 @@ It is possible to automatically rebuild the project on file updates.
   * `npm run watch:client:style` to only watch style changes (not working currently)
 
 ## License
-MIT
+Copyleft
