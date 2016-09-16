@@ -1,6 +1,6 @@
 {
   "name": "raw-webapp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Raw web application stub",
   "repository": {
     "type": "git",
@@ -12,13 +12,18 @@
     "watch:client": "npm run watch:client:style && npm run watch:client:script",
     "watch:client:script": "node_modules/.bin/webpack --watch src/client/script/main.js build/static/bundle.js",
     "watch:server": "node_modules/.bin/babel --watch --no-babelrc --presets es2015,stage-0 -d build/ src/server/",
-    "build": "npm run build:copy-files && npm run build:client && npm run build:server",
-    "build:copy-files": "(test -d build/ || mkdir build/) && cp --recursive src/server/static/ build/",
+    "build": "npm run copy && npm run build:client && npm run build:server",
     "build:client": "npm run build:client:script && npm run build:client:style",
     "build:client:script": "node_modules/.bin/webpack src/client/script/main.js build/static/bundle.js",
     "build:client:style": "(test -d build/static/ || mkdir -p build/static/) && node_modules/.bin/node-sass src/client/style/main.scss > build/static/style.css",
-    "build:server": "node_modules/.bin/babel --no-babelrc --presets es2015,stage-0 -d build/ src/server/",
-    "start": "node build/main.js"
+    "build:server": "npm run build:server:transpile && npm run build:server:copy-static",
+    "build:server:transpile": "node_modules/.bin/babel --no-babelrc --presets es2015,stage-0 -d build/ src/server/",
+    "build:server:copy-static": "(test -d build/ || mkdir build/) && cp --recursive -T src/server/static/ build/static/",
+    "copy": "npm run copy:bootstrap && npm run copy:fontawesome",
+    "copy:bootstrap": "cp -T --recursive node_modules/bootstrap/scss/ src/client/style/bootstrap/",
+    "copy:fontawesome": "(test -d src/server/static/fonts/ || mkdir src/server/static/fonts) && cp -T --recursive node_modules/font-awesome/scss/ src/client/style/font-awesome/ && cp -T --recursive node_modules/font-awesome/fonts/ src/server/static/fonts/font-awesome/",
+    "start": "node build/main.js",
+    "clean": "rm -fr build/"
   },
   "keywords": [
     "boilerplate",
@@ -31,7 +36,9 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.7.4",
+    "bootstrap": "^4.0.0-alpha.4",
     "debug": "^2.2.0",
+    "font-awesome": "^4.6.3",
     "koa": "^2.0.0",
     "koa-conditional-get": "^2.0.0",
     "koa-etag": "^3.0.0",

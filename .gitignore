@@ -1,5 +1,9 @@
 node_modules/
 build/
 *~
+*.swp
 npm-debug.log
+src/client/style/bootstrap
+src/client/style/font-awesome
+src/server/static/fonts
 
